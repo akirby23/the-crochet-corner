@@ -6,7 +6,4 @@ from .models import Pattern
 class PatternList(generic.ListView):
     model = Pattern
     queryset = Pattern.objects.filter(status=1).order_by('-created_on')
-    template_name = index.html
-
-
-
+    template_name = "index.html"
