@@ -48,16 +48,43 @@
           <li class="nav-item">
             <a href="#" class="nav-link">Patterns</a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item">
-            <a href="#" class="nav-link">Log In</a>
+            <a href="{% url 'account_logout' %}" class="nav-link">Log Out</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="{% url 'account_login' %}" class="nav-link">Log In</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Sign Up</a>
+            <a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          {% for message in messages %}
+          <div
+            class="alert {{ message.tags }} alert-dismissable fade show"
+            role="alert"
+            id="msg"
+          >
+            {{ message | safe }}
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
     <main>{% block content %} {% endblock content %}</main>
     <!-- Footer -->
     <footer>
@@ -107,7 +134,10 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Custom scripts for this template -->
+    <!-- Custom scripts for the Clean Blog template -->
     <script src="js/clean-blog.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="static/js/script.js"></script>
   </body>
 </html>
