@@ -1,1 +1,13 @@
-{% extends "base.html" %} {% block content %} {% endblock %}
+{% extends "base.html" %} {% block content %} {% for pattern in patterns %}
+
+<h2>{{ pattern.title }}</h2>
+<img src="{{ pattern.featured_image}}" />
+<p>{{ pattern.description }}</p>
+<p>Difficulty Level: {{ pattern.difficulty_level }}</p>
+<p>Yarn Type: {{ pattern.yarn_type }}</p>
+<p>Hook Size: {{ pattern.hook_size }}</p>
+<p>Gauge: {{ pattern.gauge }}</p>
+<h3>Instructions:</h3>
+<p>{{ pattern.instructions}}</p>
+
+{% endfor %} {% endblock %}
