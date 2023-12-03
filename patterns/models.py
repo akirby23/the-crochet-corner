@@ -13,6 +13,8 @@ DIFFICULTY_LEVEL_CHOICES = [
 
 class Pattern(models.Model):
     title = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True,
+                            default='default-slug')
     featured_image = CloudinaryField('image', default='placeholder')
     description = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -21,6 +23,7 @@ class Pattern(models.Model):
     yarn_type = models.CharField(max_length=50)
     hook_size = models.CharField(max_length=10)
     gauge = models.CharField(max_length=50)
+    abbreviations = models.TextField(default='default-abbreviations')
     instructions = models.TextField()
     status = models.IntegerField(choices=STATUS, default=0)
 
