@@ -11,13 +11,13 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link href="static/css/styles.css" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     <title>The Crochet Corner</title>
   </head>
 
   <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top bg-light-subtle">
+    <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">
           <img
@@ -88,9 +88,23 @@
     </div>
     <main>{% block content %} {% endblock content %}</main>
     <!-- Footer -->
-    <footer></footer>
+    <footer>
+      <div class="container text-center p-3">
+        <div class="row justify-content-center">
+            <div class="col-1"><a href="#"><i class="fa-brands fa-instagram"></i></a></div>
+            <div class="col-1"><a href="#"><i class="fa-brands fa-tiktok"></i></a></div>
+            <div class="col-1"><a href="#"><i class="fa-brands fa-youtube"></i></a></div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Custom JavaScript -->
     <script src="static/js/script.js"></script>
+
+    <!-- Font Awesome script -->
+    <script
+      src="https://kit.fontawesome.com/05f877cb89.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
