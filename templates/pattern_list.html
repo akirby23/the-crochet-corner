@@ -4,17 +4,19 @@
   <div class="row">
     {% for pattern in pattern_list %}
     <div class="col-md-4">
+        <a href="{% url 'pattern_page' pattern.slug  %}" class="pattern-link">
       <div class="card pattern-card">
         <img
           src="{{ pattern.featured_image.url }}"
           class="card-img-top pattern-img"
         />
         <div class="card-body">
-          <p class="card-text">{{ pattern.title }}</p>
+          <h5 class="card-title">{{ pattern.title }}</h5>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
+</a>
 </div>
 {% endblock %}
