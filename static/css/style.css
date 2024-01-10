@@ -1,31 +1,30 @@
 /* Pattern List */
 
 .pattern-card {
-    width: 18em;
-
+  width: 18em;
 }
 
 .pattern-img {
-    background-size: cover;
+  background-size: cover;
 }
 
 .pattern-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Navigation */
 
 nav {
-    background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 /* Footer  */
 
 footer {
-    background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 footer a {
-    text-decoration: none;
-    color: #0E0E0E;
+  text-decoration: none;
+  color: #0e0e0e;
 }

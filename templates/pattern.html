@@ -1,13 +1,48 @@
-{% extends "base.html" %} {% block content %} {% for pattern in patterns %}
+{% extends "base.html" %} {% block content %}
 
-<h2>{{ pattern.title }}</h2>
-<img src="{{ pattern.featured_image}}" />
-<p>{{ pattern.description }}</p>
-<p>Difficulty Level: {{ pattern.difficulty_level }}</p>
-<p>Yarn Type: {{ pattern.yarn_type }}</p>
-<p>Hook Size: {{ pattern.hook_size }}</p>
-<p>Gauge: {{ pattern.gauge }}</p>
-<h3>Instructions:</h3>
-<p>{{ pattern.instructions}}</p>
+<div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{ pattern.featured_image.url }}" class="img-fluid" />
+    </div>
+    <div class="col-md-4">
+      <h2>{{ pattern.title }}</h2>
+    </div>
+    <div class="col-md-4"><p>{{ pattern.description|safe }}</p></div>
+  </div>
+</div>
+<table class="table table-bordered m-4">
+  <tbody>
+    <tr>
+      <td>Difficulty Level:</td>
+      <td>{{ pattern.difficulty_level }}</td>
+    </tr>
+    <tr>
+      <td>Yarn Type:</td>
+      <td>{{ pattern.yarn_type }}</td>
+    </tr>
+    <tr>
+      <td>Hook Size:</td>
+      <td>{{ pattern.hook_size }}</td>
+    </tr>
+    <tr>
+      <td>Gauge:</td>
+      <td>{{ pattern.gauge }}</td>
+    </tr>
+  </tbody>
+</table>
 
-{% endfor %} {% endblock %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Abbreviations</h3>
+      <p>{{ pattern.abbreviations|safe}}</p>
+    </div>
+    <div class="col-sm-6">
+      <h3>Instructions:</h3>
+      <p>{{ pattern.instructions|safe}}</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

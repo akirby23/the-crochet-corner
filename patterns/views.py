@@ -17,9 +17,7 @@ class PatternPage(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Pattern.objects.filter(status=1)
         pattern = get_object_or_404(queryset, slug=slug)
-
-        return render(
-            request, "pattern.html", {
-                "pattern": pattern,
-            },
-        )
+        context = {
+            "pattern": pattern,
+        }
+        return render(request, "pattern.html", context)
