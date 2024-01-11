@@ -5,9 +5,9 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Published"))
 
 DIFFICULTY_LEVEL_CHOICES = [
-    ("B", "Beginner"),
-    ("I", "Intermediate"),
-    ("A", "Advanced"),
+    ("Beginner", "Beginner"),
+    ("Intermediate", "Intermediate"),
+    ("Advanced", "Advanced"),
 ]
 
 
