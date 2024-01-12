@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Pattern
+from .forms import CommentForm
 
 
 def home(request):
@@ -19,5 +20,6 @@ class PatternPage(View):
         pattern = get_object_or_404(queryset, slug=slug)
         context = {
             "pattern": pattern,
+            "comment_form": CommentForm()
         }
         return render(request, "pattern.html", context)
