@@ -1,30 +1,36 @@
+/* Main */
+
+main {
+    background-image: url('{% static "img/the-crochet-corner-background.webp" %}');
+}
+
 /* Pattern List */
 
 .pattern-card {
-  width: 18em;
+    width: 18em;
 }
 
 .pattern-img {
-  background-size: cover;
+    background-size: cover;
 }
 
 .pattern-link {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 /* Navigation */
 
 nav {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 /* Footer  */
 
 footer {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 footer a {
-  text-decoration: none;
-  color: #0e0e0e;
+    text-decoration: none;
+    color: #0e0e0e;
 }
