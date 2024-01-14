@@ -46,10 +46,17 @@
 </div>
 
 <div class="card-body">
+  {% if user.is_authenticated %}
+  <h5>Share your thoughts:</h5>
   <form method="post">
     {{ comment_form | crispy }} {% csrf_token %}
     <button type="submit" class="btn">Submit</button>
   </form>
+  {% else %}
+  <h5>Share your thoughts:</h5>
+  <p>
+    <a href="{% url 'account_login' %}?next={{request.path}}">Log In</a> |
+    <a href="{% url 'account_signup' %}?next={{request.path}}">Sign Up</a>
+  </p>
 </div>
-
-{% endblock %}
+{% endif %} {% endblock %}
