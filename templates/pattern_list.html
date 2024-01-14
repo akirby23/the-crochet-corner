@@ -1,22 +1,24 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="container-fluid">
+<div class="container mt-5">
+  <h3 class="text-center p-1">All Patterns</h3>
+  <hr />
   <div class="row">
+    {% for pattern in pattern_list %}
     <div class="col-md-4">
-      {% for pattern in pattern_list %}
       <div class="card pattern-card">
         <a href="{% url 'pattern_page' pattern.slug  %}" class="pattern-link">
           <img
             src="{{ pattern.featured_image.url }}"
-            class="card-img-top pattern-img"
+            class="card-img-top pattern-img img-fluid"
           />
           <div class="card-body">
             <h5 class="card-title">{{ pattern.title }}</h5>
           </div>
         </a>
       </div>
-      {% endfor %}
     </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
