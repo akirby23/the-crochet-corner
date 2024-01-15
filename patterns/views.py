@@ -5,10 +5,6 @@ from .models import Pattern
 from .forms import CommentForm
 
 
-def home(request):
-    return render(request, 'index.html')
-
-
 class PatternList(generic.ListView):
     model = Pattern
     queryset = Pattern.objects.filter(status=1).order_by('-created_on')
