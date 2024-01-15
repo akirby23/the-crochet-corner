@@ -30,7 +30,8 @@ class PatternPage(View):
     def post(self, request, slug, *args, **kwargs):
         queryset = Pattern.objects.filter(status=1)
         pattern = get_object_or_404(queryset, slug=slug)
-        comments = pattern.comments.order_by("-created_on").filter(approved=True)
+        comments = pattern.comments.order_by(
+            "-created_on").filter(approved=True)
         context = {
             "pattern": pattern,
             "comments": comments,

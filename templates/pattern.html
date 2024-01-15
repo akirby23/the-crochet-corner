@@ -45,18 +45,40 @@
   </div>
 </div>
 
-<div class="card-body">
-  {% if user.is_authenticated %}
-  <h5>Share your thoughts:</h5>
-  <form method="post">
-    {{ comment_form | crispy }} {% csrf_token %}
-    <button type="submit" class="btn">Submit</button>
-  </form>
-  {% else %}
-  <h5>Share your thoughts:</h5>
-  <p>
-    <a href="{% url 'account_login' %}?next={{request.path}}">Log In</a> |
-    <a href="{% url 'account_signup' %}?next={{request.path}}">Sign Up</a>
-  </p>
+<hr />
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      {% if user.is_authenticated %}
+      <h5>Share your thoughts:</h5>
+      <form method="post">
+        {{ comment_form | crispy }} {% csrf_token %}
+        <button type="submit" class="btn">Submit</button>
+      </form>
+      {% else %}
+      <h5>Share your thoughts:</h5>
+      <p>
+        <a href="{% url 'account_login' %}?next={{request.path}}">Log In</a> |
+        <a href="{% url 'account_signup' %}?next={{request.path}}">Sign Up</a>
+      </p>
+    </div>
+    {% endif %}
+    <div class="col-sm-6">
+      <h5>Comments:</h5>
+      {% for comment in comments %}
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">{{ comment.text }}</p>
+          <div class="card-footer">
+            <span
+              >Created on {{ comment.created_on }} by {{ comment.author }}</span
+            >
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
-{% endif %} {% endblock %}
+{% endblock %}
