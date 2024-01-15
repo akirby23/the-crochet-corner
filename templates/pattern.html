@@ -1,5 +1,7 @@
 {% extends "base.html" %} {% block content %} {% load crispy_forms_tags %}
 
+<article>
+    <!-- Pattern Details -->
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-4">
@@ -7,7 +9,19 @@
     </div>
         <div class="col-md-8">
           <h2>{{ pattern.title }}</h2>
-          <span>Created on: {{ pattern.created_on }}</span>
+          <p>Created on: {{ pattern.created_on }}</p>
+          <!-- Allows the user to save the pattern if authenticated -->
+          {% if user.is_authenticated %}
+          <form action="{% url 'save_pattern' pattern.slug %}" method="POST">
+            {% csrf_token %}
+            {% if saved %}
+            <button type="submit" name="save_for_later" value="{{ pattern.slug }}"><i class="fa-solid fa-bookmark"></i> Saved for
+                Later</button>
+            {% else %}
+        <button type="submit" name="save_for_later" value="{{ pattern.slug }}"><i class="fa-regular fa-bookmark"></i> Save for Later</button>
+        {% endif %}
+        </form>
+        {% endif %}
           <p>{{ pattern.description|safe }}</p>
         </div>
       </div>
@@ -48,12 +62,14 @@
           </div>
         </div>
       </div>
+    </article>
 
       <hr />
 
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
+            <!-- Allows the user to add comments if authenticated -->
             {% if user.is_authenticated %}
             <h5>Share your thoughts:</h5>
             <form method="post">
@@ -61,6 +77,7 @@
               <button type="submit" class="btn">Submit</button>
             </form>
             {% else %}
+            <!-- Prompts the user to log in/sign up to add a comment -->
             <h5>Share your thoughts:</h5>
             <p>
               <a href="{% url 'account_login' %}?next={{request.path}}"
@@ -73,6 +90,8 @@
             </p>
           </div>
           {% endif %}
+
+          <!-- Comments section -->
           <div class="col-sm-6">
             <h5>Comments:</h5>
             {% for comment in comments %}

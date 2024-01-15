@@ -25,6 +25,8 @@ class Pattern(models.Model):
     abbreviations = models.TextField()
     instructions = models.TextField()
     status = models.IntegerField(choices=STATUS, default=0)
+    saved = models.ManyToManyField(
+        User, related_name='saved_pattern', blank=True)
 
     class Meta:
         ordering = ['-created_on']
