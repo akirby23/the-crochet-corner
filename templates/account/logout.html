@@ -4,10 +4,12 @@
     {% trans "Sign Out" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Out" %}
-    {% endelement %}
-    <p>{% trans 'Are you sure you want to sign out?' %}</p>
+<div class="container">
+    <div class="row justify-content-center mt-5 mb-5">
+        <div class="col-9 col-lg-6">
+    <h1>Log Out</h1>
+    <hr>
+    <p>{% trans 'Are you sure you want to log out?' %}</p>
     {% url 'account_logout' as action_url %}
     {% element form method="post" action=action_url no_visible_fields=True %}
         {% slot body %}
@@ -19,9 +21,12 @@
             {% endif %}
         {% endslot %}
         {% slot actions %}
-            {% element button type="submit" %}
-                {% trans 'Sign Out' %}
-            {% endelement %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "Log Out" %}
+            </button>
         {% endslot %}
     {% endelement %}
-{% endblock content %}
+    </div>
+    </div>
+    </div>
+{% endblock %}
