@@ -5,13 +5,10 @@
   <hr />
   <div class="row">
     {% for pattern in pattern_list %}
-    <div class="col-md-4">
-      <div class="card pattern-card">
+    <div class="col-md-4 g-4 text-center">
+      <div class="card h-100 pattern-card">
         <a href="{% url 'pattern_page' pattern.slug  %}" class="pattern-link">
-          <img
-            src="{{ pattern.featured_image.url }}"
-            class="card-img-top pattern-img img-fluid"
-          />
+          <img src="{{ pattern.featured_image.url }}" class="card-img-top" />
           <div class="card-body">
             <h5 class="card-title">{{ pattern.title }}</h5>
           </div>

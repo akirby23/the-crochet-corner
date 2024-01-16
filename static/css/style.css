@@ -7,14 +7,6 @@ main {
 
 /* Pattern List */
 
-.pattern-card {
-    width: 18em;
-}
-
-.pattern-img {
-    background-size: cover;
-}
-
 .pattern-link {
     text-decoration: none;
 }
