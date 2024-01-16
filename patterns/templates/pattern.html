@@ -99,9 +99,12 @@
               <div class="card-body">
                 <p class="card-text">{{ comment.text }}</p>
                 <div class="card-footer">
-                  <span
+                  <p>
                     >Created on {{ comment.created_on }} by {{ comment.author }}</span>
-                </div>
+                </p>
+                {% if comment.author == request.user  %}
+                <p><a href="#">Edit</a> | <a href="#">Delete</a></p>
+                {% endif  %}
               </div>
             </div>
             {% endfor %}
@@ -109,6 +112,4 @@
         </div>
       </div>
       {% endblock %}
-    </div>
-  </div>
-</div>
+
