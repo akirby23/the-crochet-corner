@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from .models import Pattern, Comment
 from .forms import CommentForm
 
@@ -77,4 +78,12 @@ class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     form_class = CommentForm
     template_name = 'edit_comment.html'
     success_message = 'Your comment has been edited successfully and is now pending approval.'
-    success_url = "/"
+    success_url = '/'
+
+
+class DeleteComment(LoginRequiredMixin, DeleteView, SuccessMessageMixin):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'delete_comment.html'
+    success_message = 'Your comment has been deleted successfully.'
+    success_url = '/'

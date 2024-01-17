@@ -9,4 +9,6 @@ urlpatterns = [
     ),
     path('pattern/<int:pk>/edit_comment/',
          views.EditComment.as_view(), name='edit_comment'),
+    path('pattern/<int:pk>/delete_comment/',
+         views.DeleteComment.as_view(), name='delete_comment'),
 ]
