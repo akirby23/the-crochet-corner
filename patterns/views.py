@@ -77,8 +77,19 @@ class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     model = Comment
     form_class = CommentForm
     template_name = 'edit_comment.html'
-    success_message = 'Your comment has been edited successfully and is now pending approval.'
+    success_message = 'Your comment has been edited and is now pending approval.'
     success_url = '/'
+
+    def form_valid(self, form):
+        """
+        Sets the author of the comment to the user if the form
+        is valid.
+        Reverts the approved status to false.
+        """
+        form.instance.name = self.request.user
+        self.object.approved = False
+        self.object.save()
+        return super().form_valid(form)
 
 
 class DeleteComment(LoginRequiredMixin, DeleteView, SuccessMessageMixin):
