@@ -20,6 +20,8 @@
             {% else %}
         <button type="submit" name="save_for_later" value="{{ pattern.slug }}"><i class="fa-regular fa-bookmark"></i> Save for Later</button>
         {% endif %}
+        {% else  %}
+        <p><i class="fa-regular fa-bookmark"></i> To save for later, please <a href="{% url 'account_login' %}?next={{request.path}}">Log In</a> or <a href="{% url 'account_signup' %}?next={{request.path}}">Sign Up</a>.</p>
         </form>
         {% endif %}
           <p>{{ pattern.description|safe }}</p>
