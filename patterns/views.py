@@ -1,7 +1,12 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
+from django.views.generic.edit import UpdateView
 from django.http import HttpResponseRedirect
-from .models import Pattern
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Pattern, Comment
 from .forms import CommentForm
 
 
@@ -65,3 +70,11 @@ class SavePattern(View):
         else:
             pattern.saved.add(request.user)
         return HttpResponseRedirect(reverse('pattern_page', args=[slug]))
+
+
+class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'edit_comment.html'
+    success_message = 'Your comment has been edited successfully and is now pending approval.'
+    success_url = "/"
