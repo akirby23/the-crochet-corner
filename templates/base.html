@@ -53,6 +53,7 @@
             <li class="nav-item" aria-current="page">
               <a href="{% url 'home' %}" class="nav-link active">Home</a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -78,11 +79,13 @@
                 </li>
               </ul>
             </li>
-            {% if user.is_authenticated %}
             <li class="nav-item">
               <a href="{% url 'account_logout' %}" class="nav-link">Log Out</a>
             </li>
             {% else %}
+            <li class="nav-item" aria-current="page">
+              <a href="{% url 'pattern_list' %}" class="nav-link">Patterns</a>
+            </li>
             <li class="nav-item">
               <a href="{% url 'account_login' %}" class="nav-link">Log In</a>
             </li>
