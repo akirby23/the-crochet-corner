@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container">
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col-9 col-lg-6">
+      <hr />
+      <h1 class="text-center">500 - Internal Server Error</h1>
+      <p>Something went wrong.</p>
+      <p>
+        Please refresh the page to try again or click
+        <a href="{% url 'home' %}">here</a> to return to the home page.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
