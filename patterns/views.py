@@ -83,7 +83,7 @@ class SavePattern(View):
         return HttpResponseRedirect(reverse('pattern_page', args=[slug]))
 
 
-class SavedPatternList(generic.ListView):
+class SavedPatternList(LoginRequiredMixin, generic.ListView):
     model = Pattern
     template_name = "saved_pattern_list.html"
     """
