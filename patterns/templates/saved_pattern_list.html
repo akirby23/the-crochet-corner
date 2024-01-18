@@ -8,7 +8,14 @@
     <div class="col-md-4 g-4 text-center">
       <div class="card h-100 pattern-card">
         <a href="{% url 'pattern_page' pattern.slug  %}" class="pattern-link">
+          {% if 'placeholder' in pattern.featured_image.url %}
+          <img
+            src="https://res.cloudinary.com/dxs42sums/image/upload/v1705542273/pattern-placeholder_ljrrtz.jpg"
+            class="card-img-top"
+          />
+          {% else %}
           <img src="{{ pattern.featured_image.url }}" class="card-img-top" />
+          {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ pattern.title }}</h5>
           </div>
@@ -24,5 +31,25 @@
     </div>
     {% endfor %}
   </div>
+</div>
+
+<!-- Pagination
+Borrow & adapted from: https://docs.djangoproject.com/en/5.0/topics/pagination/#paginating-a-listview -->
+<div class="pagination justify-content-center p-3">
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; first</a>
+    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <span class="current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">next</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+    {% endif %}
+  </span>
 </div>
 {% endblock %}
