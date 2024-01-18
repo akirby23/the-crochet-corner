@@ -4,7 +4,7 @@
   <h3 class="text-center p-1">My Saved Patterns</h3>
   <hr />
   <div class="row">
-    {% for pattern in saved_pattern_list %}
+    {% for pattern in pattern_list %}
     <div class="col-md-4 g-4 text-center">
       <div class="card h-100 pattern-card">
         <a href="{% url 'pattern_page' pattern.slug  %}" class="pattern-link">

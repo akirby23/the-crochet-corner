@@ -67,19 +67,30 @@ class SavePattern(View):
     """
     Allows the user to save the pattern for later.
     """
+
     def post(self, request, slug):
         pattern = get_object_or_404(Pattern, slug=slug)
         if pattern.saved.filter(id=request.user.id).exists():
             pattern.saved.remove(request.user)
             messages.success(
                 self.request, 'This pattern has been removed from My Saved Patterns.'
-                )
+            )
         else:
             pattern.saved.add(request.user)
             messages.success(
                 self.request, 'This pattern has been added to My Saved Patterns.'
-                )
+            )
         return HttpResponseRedirect(reverse('pattern_page', args=[slug]))
+
+
+class SavedPatternList(generic.ListView):
+    model = Pattern
+    template_name = "saved_pattern_list.html"
+    """
+    Retrieves the patterns saved by the authenticated user.
+    """
+    def get_queryset(self):
+        return Pattern.objects.filter(saved=self.request.user.id)
 
 
 class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):

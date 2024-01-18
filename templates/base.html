@@ -71,7 +71,11 @@
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#">My Saved Patterns</a></li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'saved_pattern_list' %}"
+                    >My Saved Patterns</a
+                  >
+                </li>
               </ul>
             </li>
             {% if user.is_authenticated %}
