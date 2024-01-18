@@ -1,8 +1,15 @@
-/* Main */
+/* Home page */
 
-main {
+#hero-image {
     background-image: url("https://res.cloudinary.com/dxs42sums/image/upload/v1705326005/the-crochet-corner-background_n4ufgm.webp");
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#welcome {
+    background-color: rgba(131, 178, 113, 0.9);
+    color: #F8F8F8
 }
 
 /* Pattern List */
