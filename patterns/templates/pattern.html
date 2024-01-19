@@ -2,121 +2,118 @@
 
 <article>
     <!-- Pattern Details -->
-<div class="container">
-    <h1 class="text-center">{{ pattern.title }}</h1>
-    <hr>
-  <div class="row mt-4 mb-5">
-    <div class="col-md-4">
-      <img src="{{ pattern.featured_image.url }}" class="img-fluid rounded" />
-    </div>
-        <div class="col-md-8">
-            <!-- Allows the user to save the pattern if authenticated -->
-            {% if user.is_authenticated %}
-            <form action="{% url 'save_pattern' pattern.slug %}" method="POST">
-                {% csrf_token %}
-                {% if saved %}
-                <button type="submit" name="save_for_later" value="{{ pattern.slug }}"><i class="fa-solid fa-bookmark"></i> Saved
-                    for
-                    Later</button>
+    <div class="container">
+        <h1 class="text-center">{{ pattern.title }}</h1>
+        <hr>
+        <div class="row mt-4 mb-5">
+            <div class="col-md-4">
+                <img src="{{ pattern.featured_image.url }}" class="img-fluid rounded" />
+            </div>
+            <div class="col-md-8">
+                <!-- Allows the user to save the pattern if authenticated -->
+                {% if user.is_authenticated %}
+                <form action="{% url 'save_pattern' pattern.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if saved %}
+                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}"><i
+                            class="fa-solid fa-bookmark"></i> Saved
+                        for
+                        Later</button>
+                    {% else %}
+                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}"><i
+                            class="fa-regular fa-bookmark"></i> Save
+                        for Later</button>
+                </form>
+                {% endif %}
                 {% else %}
-                <button type="submit" name="save_for_later" value="{{ pattern.slug }}"><i class="fa-regular fa-bookmark"></i> Save
-                    for Later</button>
-            </form>
-            {% endif %}
-            {% else %}
-            <p><i class="fa-regular fa-bookmark"></i> To save for later, please <a
-                    href="{% url 'account_login' %}?next={{request.path}}">Log In</a> or <a
-                    href="{% url 'account_signup' %}?next={{request.path}}">Sign Up</a>.</p>
-            </form>
-            {% endif %}
-        <h4>Description:</h4>
-        <p>{{ pattern.description|safe }}</p>
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <td>Difficulty Level:</td>
-                        <td>{{ pattern.difficulty_level }}</td>
-                    </tr>
-                    <tr>
-                        <td>Yarn Type:</td>
-                        <td>{{ pattern.yarn_type }}</td>
-                    </tr>
-                    <tr>
-                        <td>Hook Size:</td>
-                        <td>{{ pattern.hook_size }}</td>
-                    </tr>
-                    <tr>
-                        <td>Gauge:</td>
-                        <td>{{ pattern.gauge }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="fst-italic">Created on: {{ pattern.created_on }}</p>
-        </div>
-   <hr>
-        <div class="row mt-4">
-          <div class="col-sm-6">
-            <h3>Abbreviations</h3>
-            <p>{{ pattern.abbreviations|safe}}</p>
-          </div>
-          <div class="col-sm-6">
-            <h3>Instructions</h3>
-            <p>{{ pattern.instructions|safe}}</p>
-          </div>
-        </div>
-        </div>
- 
-
-      <hr />
-
-        <div class="row g-3">
-          <div class="col-sm-6">
-            <!-- Allows the user to add comments if authenticated -->
-            {% if user.is_authenticated %}
-            <h5>Share your thoughts:</h5>
-            <form method="post">
-              {{ comment_form | crispy }} {% csrf_token %}
-              <button type="submit" class="btn">Submit</button>
-            </form>
-            {% else %}
-            <!-- Prompts the user to log in/sign up to add a comment -->
-            <h5>Share your thoughts:</h5>
-            <p>
-              <a href="{% url 'account_login' %}?next={{request.path}}"
-                >Log In</a
-              >
-              |
-              <a href="{% url 'account_signup' %}?next={{request.path}}"
-                >Sign Up</a
-              >
-            </p>
-          </div>
-          {% endif %}
-
-        <!-- Comments section -->
-        <div class="col-sm-6 pb-5">
-            <h5>Comments:</h5>
-            {% for comment in comments %}
-            <div class="card">
-                <div class="card-body">
-                    <p class="card-text">{{ comment.text }}</p>
-                    <div class="card-footer">
-                        <p>
-                            >Created on {{ comment.created_on }} by {{ comment.author }}</span>
-                        </p>
-                        {% if comment.author == request.user %}
-                        <p><a href="{% url 'edit_comment' comment.id %}">Edit</a> | <a
-                                href="{% url 'delete_comment' comment.id %}">Delete</a></p>
-                        {% endif %}
-                    </div>
+                <p><i class="fa-regular fa-bookmark"></i> To save for later, please <a
+                        href="{% url 'account_login' %}?next={{request.path}}">Log In</a> or <a
+                        href="{% url 'account_signup' %}?next={{request.path}}">Sign Up</a>.</p>
+                </form>
+                {% endif %}
+                <h4>Description:</h4>
+                <p>{{ pattern.description|safe }}</p>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Difficulty Level:</td>
+                            <td>{{ pattern.difficulty_level }}</td>
+                        </tr>
+                        <tr>
+                            <td>Yarn Type:</td>
+                            <td>{{ pattern.yarn_type }}</td>
+                        </tr>
+                        <tr>
+                            <td>Hook Size:</td>
+                            <td>{{ pattern.hook_size }}</td>
+                        </tr>
+                        <tr>
+                            <td>Gauge:</td>
+                            <td>{{ pattern.gauge }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="fst-italic">Created on: {{ pattern.created_on }}</p>
+            </div>
+            </div>
+            <hr>
+            <div class="row mt-4">
+                <div class="col-sm-6">
+                    <h3>Abbreviations</h3>
+                    <p>{{ pattern.abbreviations|safe}}</p>
+                </div>
+                <div class="col-sm-6">
+                    <h3>Instructions</h3>
+                    <p>{{ pattern.instructions|safe}}</p>
                 </div>
             </div>
-            {% empty %}
-            <p>There are no comments yet.</p>
+
+        <hr />
+
+        <div class="row g-3">
+            <div class="col-sm-6">
+                <!-- Allows the user to add comments if authenticated -->
+                {% if user.is_authenticated %}
+                <h5>Share your thoughts:</h5>
+                <form method="post">
+                    {{ comment_form | crispy }} {% csrf_token %}
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+                {% else %}
+                <!-- Prompts the user to log in/sign up to add a comment -->
+                <h5>Share your thoughts:</h5>
+                <p>
+                    <a href="{% url 'account_login' %}?next={{request.path}}">Log In</a>
+                    |
+                    <a href="{% url 'account_signup' %}?next={{request.path}}">Sign Up</a>
+                </p>
+            </div>
+            {% endif %}
+
+            <!-- Comments section -->
+            <div class="col-sm-6 pb-5">
+                <h5>Comments:</h5>
+                {% for comment in comments %}
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">{{ comment.text | linebreaks }}</p>
+                        <div class="card-footer">
+                            <p>
+                                Created on {{ comment.created_on }} by {{ comment.author }}</span>
+                            </p>
+                            {% if comment.author == request.user %}
+                            <p><a href="{% url 'edit_comment' comment.id %}">Edit</a> | <a
+                                    href="{% url 'delete_comment' comment.id %}">Delete</a></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>There are no comments yet.</p>
+                {% endfor %}
+            </div>
         </div>
-        </div>
-        {% endfor %}
     </div>
-        </article>
-      {% endblock %}
+</article>
+{% endblock %}
 
