@@ -24,10 +24,15 @@
     object-fit: cover;
 }
 
-/* Navigation */
+/* Navbar */
 
 nav {
     background-color: #ffffff;
+}
+
+#logo {
+    width: 30px;
+    height: 30px;
 }
 
 /* Footer  */
