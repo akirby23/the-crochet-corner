@@ -1,15 +1,21 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="container">
-    <div class="row justify-content-center mt-5 mb-5">
-        <div class="col-9 col-lg-6">
-            <hr />
-            <h1 class="text-center">400 - Bad Request</h1>
-            <p>Unfortunately, this page isn't working right now.</p>
-            <p>
-                Click <a href="{% url 'home' %}">here</a> to return to the home page.
-            </p>
-        </div>
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col-9 col-lg-6">
+      <hr />
+      <h1 class="text-center">400 - Bad Request</h1>
+      <p>Unfortunately, this page isn't working right now.</p>
+      <p>
+        Click
+        <a
+          href="{% url 'home' %}"
+          aria-label="Click here to return to the home page"
+          >here</a
+        >
+        to return to the home page.
+      </p>
     </div>
+  </div>
 </div>
 {% endblock %}

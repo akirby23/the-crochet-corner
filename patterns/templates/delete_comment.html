@@ -12,7 +12,11 @@
           Delete
         </button>
         <button type="button" class="btn">
-          <a href="{% url 'pattern_page' comment.pattern.slug %}">Cancel</a>
+          <a
+            href="{% url 'pattern_page' comment.pattern.slug %}"
+            aria-label="Cancel"
+            >Cancel</a
+          >
         </button>
       </form>
     </div>

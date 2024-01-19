@@ -7,7 +7,7 @@
         <hr>
         <div class="row mt-4 mb-5">
             <div class="col-md-4">
-                <img src="{{ pattern.featured_image.url }}" class="img-fluid rounded" />
+                <img src="{{ pattern.featured_image.url }}" class="img-fluid rounded" alt="Pattern image" />
             </div>
             <div class="col-md-8">
                 <!-- Allows the user to save the pattern if authenticated -->
@@ -27,8 +27,8 @@
                 {% endif %}
                 {% else %}
                 <p><i class="fa-regular fa-bookmark"></i> To save for later, please <a
-                        href="{% url 'account_login' %}?next={{request.path}}">Log In</a> or <a
-                        href="{% url 'account_signup' %}?next={{request.path}}">Sign Up</a>.</p>
+                        href="{% url 'account_login' %}?next={{request.path}}" aria-label="Log in to save pattern for later">Log In</a> or <a
+                        href="{% url 'account_signup' %}?next={{request.path}}" aria-label="Sign up to save pattern for later">Sign Up</a>.</p>
                 </form>
                 {% endif %}
                 <h4>Description:</h4>
@@ -83,9 +83,9 @@
                 <!-- Prompts the user to log in/sign up to add a comment -->
                 <h5>Share your thoughts:</h5>
                 <p>
-                    <a href="{% url 'account_login' %}?next={{request.path}}">Log In</a>
+                    <a href="{% url 'account_login' %}?next={{request.path}}" aria-label="Log in to leave a comment">Log In</a>
                     |
-                    <a href="{% url 'account_signup' %}?next={{request.path}}">Sign Up</a>
+                    <a href="{% url 'account_signup' %}?next={{request.path}}" aria-label="Sign up to leave a comment">Sign Up</a>
                 </p>
             </div>
             {% endif %}
@@ -102,8 +102,8 @@
                                 Created on {{ comment.created_on }} by {{ comment.author }}</span>
                             </p>
                             {% if comment.author == request.user %}
-                            <p><a href="{% url 'edit_comment' comment.id %}">Edit</a> | <a
-                                    href="{% url 'delete_comment' comment.id %}">Delete</a></p>
+                            <p><a href="{% url 'edit_comment' comment.id %}" aria-label="Edit comment">Edit</a> | <a
+                                    href="{% url 'delete_comment' comment.id %}" aria-label="Delete comment">Delete</a></p>
                             {% endif %}
                         </div>
                     </div>

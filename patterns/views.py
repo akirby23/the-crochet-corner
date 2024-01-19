@@ -15,6 +15,7 @@ class PatternList(generic.ListView):
     model = Pattern
     queryset = Pattern.objects.filter(status=1).order_by('-created_on')
     template_name = "pattern_list.html"
+    paginate_by = 9
 
 
 class PatternPage(View):
@@ -86,9 +87,11 @@ class SavePattern(View):
 class SavedPatternList(LoginRequiredMixin, generic.ListView):
     model = Pattern
     template_name = "saved_pattern_list.html"
+    paginate_by = 9
     """
     Retrieves the patterns saved by the authenticated user.
     """
+
     def get_queryset(self):
         return Pattern.objects.filter(saved=self.request.user.id)
 
