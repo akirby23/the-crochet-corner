@@ -17,6 +17,8 @@ class Pattern(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     description = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.CASCADE, default='1')
     difficulty_level = models.CharField(
         choices=DIFFICULTY_LEVEL_CHOICES, max_length=20)
     yarn_type = models.CharField(max_length=50)

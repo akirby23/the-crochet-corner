@@ -42,7 +42,27 @@
 
 ### Languages
 
+- HTML
+- CSS
+- JavaScript
+- Python
+
 ### Frameworks, Libraries & Programs
+
+- Django
+- Django-allauth
+- ElephantSQL
+- Heroku
+- CodeAnywhere
+- Git
+- GitHub
+- Bootstrap v5.3
+- Cloudinary
+- Balsamiq
+- Summernote
+- Am I Responsive
+- Google Fonts
+- coolors
 
 ## Testing
 
@@ -60,4 +80,4 @@ The testing details are documented within the [TESTING.md](TESTING.md) file.
 
 ### Acknowledgements
 
-[Back to the top](#table-of-contents)
+[Back to the top](#the-crochet-corner)
