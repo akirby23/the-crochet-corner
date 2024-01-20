@@ -16,6 +16,10 @@ body {
     font-family: 'Noto Serif JP', serif;
 }
 
+.remove-text-decoration {
+    text-decoration: none;
+}
+
 /* Home page */
 
 #hero-image {
@@ -31,10 +35,6 @@ body {
 }
 
 /* Pattern List */
-
-.pattern-link {
-    text-decoration: none;
-}
 
 .card-img-top {
     width: 100%;

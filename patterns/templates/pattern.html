@@ -15,12 +15,12 @@
                 <form action="{% url 'save_pattern' pattern.slug %}" method="POST">
                     {% csrf_token %}
                     {% if saved %}
-                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}"><i
+                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}" class="btn btn-link remove-text-decoration"><i
                             class="fa-solid fa-bookmark"></i> Saved
                         for
                         Later</button>
                     {% else %}
-                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}"><i
+                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}" class="btn btn-link remove-text-decoration"><i
                             class="fa-regular fa-bookmark"></i> Save
                         for Later</button>
                 </form>
