@@ -2,6 +2,9 @@
 
 <div class="container mt-5">
   <h1 class="text-center p-1">All Patterns</h1>
+  <a href="{% url 'create_pattern' %}"
+    ><i class="fa-solid fa-plus"></i> Create New Pattern</a
+  >
   <hr />
   <div class="row">
     {% for pattern in pattern_list %}

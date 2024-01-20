@@ -1,14 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
-from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
+from django.utils.text import slugify
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
 from .models import Pattern, Comment
-from .forms import CommentForm
+from .forms import PatternForm, CommentForm
 
 
 class PatternList(generic.ListView):
@@ -64,6 +63,53 @@ class PatternPage(View):
         return render(request, "pattern.html", context)
 
 
+class CreatePattern(LoginRequiredMixin, CreateView):
+    """
+    Allows users to create crochet patterns from the UI
+    """
+    model = Pattern
+    form_class = PatternForm
+    template_name = 'create_pattern.html'
+    success_url = '/'
+
+    def form_valid(self, form):
+        """
+        If the form is valid, the author is set to
+        the authenticated user and the title is
+        populated as the slug
+        """
+        form.instance.created_by = self.request.user
+        form.instance.slug = slugify(form.instance.title)
+        return super().form_valid(form)
+
+
+class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'edit_comment.html'
+    success_message = 'Your comment has been edited and is now pending approval.'
+    success_url = '/'
+
+    def form_valid(self, form):
+        """
+        Sets the author of the comment to the user if the form
+        is valid.
+        Reverts the approved status to false.
+        """
+        form.instance.author = self.request.user
+        self.object.approved = False
+        self.object.save()
+        return super().form_valid(form)
+
+
+class DeleteComment(LoginRequiredMixin, DeleteView, SuccessMessageMixin):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'delete_comment.html'
+    success_message = 'Your comment has been deleted successfully.'
+    success_url = '/'
+
+
 class SavePattern(View):
     """
     Allows the user to save the pattern for later.
@@ -94,30 +140,3 @@ class SavedPatternList(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return Pattern.objects.filter(saved=self.request.user.id)
-
-
-class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
-    model = Comment
-    form_class = CommentForm
-    template_name = 'edit_comment.html'
-    success_message = 'Your comment has been edited and is now pending approval.'
-    success_url = '/'
-
-    def form_valid(self, form):
-        """
-        Sets the author of the comment to the user if the form
-        is valid.
-        Reverts the approved status to false.
-        """
-        form.instance.name = self.request.user
-        self.object.approved = False
-        self.object.save()
-        return super().form_valid(form)
-
-
-class DeleteComment(LoginRequiredMixin, DeleteView, SuccessMessageMixin):
-    model = Comment
-    form_class = CommentForm
-    template_name = 'delete_comment.html'
-    success_message = 'Your comment has been deleted successfully.'
-    success_url = '/'
