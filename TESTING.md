@@ -2,6 +2,12 @@
 
 [Return to README.md](README.md)
 
+## Table of Contents
+
+- [Manual Testing](#manual-testing)
+- [Bugs](#bugs)
+- [Validator Testing](#validator-testing)
+
 ## Manual Testing
 
 <details>
@@ -161,6 +167,13 @@
 </details>
 
 ## Bugs
+
+| Feature  |  Issue | Status  | Notes  |
+|---|---|---|---|
+| Save for Later button  | If the user attempts to unsave a crochet pattern for later, they are brought down to the comment section and prompted to submit their comment. Once a comment is entered and the submit button is clicked, the pattern is unsaved. No comment is registered in the backend. ![Save for Later button bug](documentation/testing/bugs/save-for-later-bug.gif)  | Resolved  | **Root cause:** The if statement was eding outside of the form element. ![Save for Later bug root cause](documentation/testing/bugs/save-for-later-bug-root-cause.PNG) **Fix:** Placed the "endif" statement inside the form element. ![Save for Later button fix](documentation/testing/bugs/save-for-later-bug-fix.PNG)
+ |
+|   |   |   |   |
+|   |   |   |   |
 
 ## Validator Testing
 
