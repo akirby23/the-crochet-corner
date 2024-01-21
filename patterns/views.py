@@ -112,10 +112,16 @@ class EditPattern(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
         queryset = queryset.filter(created_by=self.request.user)
         return queryset
 
-   
+
+class DeletePattern(LoginRequiredMixin, DeleteView, SuccessMessageMixin):
+    model = Pattern
+    form_class = PatternForm
+    template_name = 'delete_pattern.html'
+    success_url = '/'
+
+
 class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     model = Comment
-    form_class = CommentForm
     template_name = 'edit_comment.html'
     success_message = 'Your comment has been edited and is now pending approval.'
     success_url = '/'
@@ -130,7 +136,7 @@ class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
         self.object.approved = False
         self.object.save()
         return super().form_valid(form)
-   
+
     def get_queryset(self):
         """
         Prevents users from editing patterns they have not

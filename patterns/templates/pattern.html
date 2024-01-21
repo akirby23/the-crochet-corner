@@ -5,12 +5,12 @@
     <div class="container">
         <h1 class="text-center">{{ pattern.title }}</h1>
         {% if user.is_authenticated and pattern.created_by == request.user %}
-        <span><a href="{% url 'edit_pattern' pattern.slug %}" aria-label="Edit pattern">Edit</a> | <a href="#">Delete</a></span>
+        <span><a href="{% url 'edit_pattern' pattern.slug %}" aria-label="Edit pattern">Edit</a> | <a href="{% url 'delete_pattern' pattern.slug %}" aria-label="Delete pattern">Delete</a></span>
         {% endif %}
         <hr>
         <div class="row mt-4 mb-5">
             <div class="col-md-4">
-                <img src="{{ pattern.featured_image.url }}" class="img-fluid rounded" alt="Pattern image" />
+                <img src="{{ pattern.featured_image.url }}" class="img-fluid rounded" alt="Pattern image"/>
             </div>
             <div class="col-md-8">
                 <!-- Allows the user to save the pattern if authenticated -->

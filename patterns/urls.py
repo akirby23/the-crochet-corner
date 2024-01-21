@@ -11,6 +11,8 @@ urlpatterns = [
          name='create_pattern'),
     path('patterns/<slug:slug>/edit_pattern/', views.EditPattern.as_view(),
          name='edit_pattern'),
+    path('patterns/<slug:slug>/delete_pattern/', views.DeletePattern.as_view(),
+         name='delete_pattern'),
     path('save/pattern/<slug:slug>/', views.SavePattern.as_view(),
          name='save_pattern'),
     path('pattern/<int:pk>/edit_comment/', views.EditComment.as_view(),
