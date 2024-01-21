@@ -65,7 +65,8 @@ class PatternPage(View):
 
 class CreatePattern(LoginRequiredMixin, CreateView):
     """
-    Allows users to create crochet patterns from the UI
+    Allows authenticated users to create crochet patterns 
+    from the UI.
     """
     model = Pattern
     form_class = PatternForm
@@ -80,6 +81,24 @@ class CreatePattern(LoginRequiredMixin, CreateView):
         """
         form.instance.created_by = self.request.user
         form.instance.slug = slugify(form.instance.title)
+        return super().form_valid(form)
+
+
+class EditPattern(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
+    """
+    Allows authenticated users to edit their own patterns.
+    """
+    model = Pattern
+    form_class = PatternForm
+    template_name = "edit_pattern.html"
+    success_url = "/"
+
+    def form_valid(self, form):
+        """
+        Sets the author of the pattern to the authenticated 
+        user if the form is valid.
+        """
+        form.instance.created_by = self.request.user
         return super().form_valid(form)
 
 

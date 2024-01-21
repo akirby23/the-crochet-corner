@@ -7,7 +7,7 @@
       <hr />
       <form method="POST">
         {% csrf_token %} {{ form | crispy }}
-        <button type="submit" value="Save" class="btn">Save</button>
+        <button type="submit" value="Save" class="btn" aria-label="Save">Save</button>
         <button type="button" class="btn">
           <a href="{% url 'pattern_list' %}" aria-label="Cancel">Cancel</a>
         </button>

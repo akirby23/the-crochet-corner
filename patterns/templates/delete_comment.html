@@ -8,7 +8,12 @@
       <p>Are you sure you want to delete this comment?</p>
       <form method="POST">
         {% csrf_token %}
-        <button type="submit" value="Delete" class="btn btn-danger">
+        <button
+          type="submit"
+          value="Delete"
+          class="btn btn-danger"
+          aria-label="Delete"
+        >
           Delete
         </button>
         <button type="button" class="btn">
