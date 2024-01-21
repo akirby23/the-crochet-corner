@@ -13,7 +13,7 @@ from .forms import PatternForm, CommentForm
 class PatternList(generic.ListView):
     """
     Displays a list of published crochet patterns.
-    Filters them from newest to oldest. 
+    Filters them from newest to oldest.
     """
     model = Pattern
     queryset = Pattern.objects.filter(status=1).order_by('-created_on')
@@ -106,7 +106,7 @@ class EditPattern(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         """
-        Sets the author of the pattern to the authenticated 
+        Sets the author of the pattern to the authenticated
         user if the form is valid.
         """
         form.instance.created_by = self.request.user
@@ -124,7 +124,7 @@ class EditPattern(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         return queryset
 
 
-class DeletePattern(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+class DeletePattern(LoginRequiredMixin, DeleteView):
     """
     Allows authenticated users to delete their own patterns.
     """
@@ -144,6 +144,15 @@ class DeletePattern(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
         queryset = super(DeletePattern, self).get_queryset()
         queryset = queryset.filter(created_by=self.request.user)
         return queryset
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Retrieves the success message as the SuccessMessageMixin
+        is not compatible with DeleteView.
+        Solution found on Stack Overflow
+        """
+        messages.success(self.request, self.success_message)
+        return super(DeletePattern, self).delete(request, *args, **kwargs)
 
 
 class EditComment(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
@@ -179,7 +188,7 @@ class EditComment(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         return queryset
 
 
-class DeleteComment(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+class DeleteComment(LoginRequiredMixin, DeleteView):
     """
     Allows authenticated users to delete their own comments.
     """
@@ -189,7 +198,23 @@ class DeleteComment(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     success_url = '/'
     success_message = 'Comment has been deleted successfully.'
 
+    def get_queryset(self):
+        """
+        Prevents users from deleting comments they have not
+        created.
+        Written with help from Stack Overflow
+        (link in README.md)
+        """
+        queryset = super(DeleteComment, self).get_queryset()
+        queryset = queryset.filter(created_by=self.request.user)
+        return queryset
+
     def delete(self, request, *args, **kwargs):
+        """
+        Retrieves the success message as the SuccessMessageMixin
+        is not compatible with DeleteView.
+        Solution found on Stack Overflow
+        """
         messages.success(self.request, self.success_message)
         return super(DeleteComment, self).delete(request, *args, **kwargs)
 

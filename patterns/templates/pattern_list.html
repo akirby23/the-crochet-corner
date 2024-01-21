@@ -18,7 +18,7 @@
     {% for pattern in pattern_list %}
     <!-- Renders all published patterns as cards -->
     <div class="col-md-4 g-4 text-center">
-      <div class="card h-100 pattern-card">
+      <div class="card h-100 border-5">
         <a
           href="{% url 'pattern_page' pattern.slug  %}"
           class="remove-text-decoration"
