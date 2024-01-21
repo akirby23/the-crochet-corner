@@ -3,7 +3,7 @@
 <article>
     <!-- Pattern Details -->
     <div class="container">
-        <h2 class="text-center">{{ pattern.title }}</h2>
+        <h2 class="text-center text-capitalize">{{ pattern.title }}</h2>
         <!-- Displays "Edit" and "Delete" buttons to the user who created the pattern while authenticated -->
         {% if user.is_authenticated and pattern.created_by == request.user %}
         <span><a href="{% url 'edit_pattern' pattern.slug %}" aria-label="Edit pattern">Edit</a> | <a href="{% url 'delete_pattern' pattern.slug %}" aria-label="Delete pattern">Delete</a></span>
@@ -81,7 +81,7 @@
                 <h5>Share your thoughts:</h5>
                 <form method="post">
                     {{ comment_form | crispy }} {% csrf_token %}
-                    <button type="submit" class="btn">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
                 {% else %}
                 <!-- Prompts the user to log in/sign up to add a comment -->
