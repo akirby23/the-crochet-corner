@@ -8,6 +8,7 @@
   <hr />
   <div class="row">
     {% for pattern in pattern_list %}
+    <!-- Renders all published patterns as cards -->
     <div class="col-md-4 g-4 text-center">
       <div class="card h-100 pattern-card">
         <a
@@ -16,6 +17,7 @@
           aria-label="Pattern"
         >
           {% if 'placeholder' in pattern.featured_image.url %}
+          <!-- Adds a placeholder image if the creator of the pattern has not added one -->
           <img
             src="https://res.cloudinary.com/dxs42sums/image/upload/v1705542273/pattern-placeholder_ljrrtz.jpg"
             class="card-img-top"

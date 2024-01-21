@@ -4,6 +4,7 @@
     <!-- Pattern Details -->
     <div class="container">
         <h2 class="text-center">{{ pattern.title }}</h2>
+        <!-- Displays "Edit" and "Delete" buttons to the user who created the pattern while authenticated -->
         {% if user.is_authenticated and pattern.created_by == request.user %}
         <span><a href="{% url 'edit_pattern' pattern.slug %}" aria-label="Edit pattern">Edit</a> | <a href="{% url 'delete_pattern' pattern.slug %}" aria-label="Delete pattern">Delete</a></span>
         {% endif %}
@@ -13,8 +14,8 @@
                 <img src="{{ pattern.featured_image.url }}" class="img-fluid rounded" alt="Pattern image"/>
             </div>
             <div class="col-md-8">
-                <!-- Allows the user to save the pattern if authenticated -->
                 {% if user.is_authenticated %}
+                <!-- Allows the user to save the pattern if authenticated -->
                 <form action="{% url 'save_pattern' pattern.slug %}" method="POST">
                     {% csrf_token %}
                     {% if saved %}
