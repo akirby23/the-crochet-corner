@@ -112,7 +112,7 @@ class EditPattern(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
         queryset = queryset.filter(created_by=self.request.user)
         return queryset
 
-    
+   
 class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     model = Comment
     form_class = CommentForm

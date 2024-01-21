@@ -4,7 +4,9 @@
     <!-- Pattern Details -->
     <div class="container">
         <h1 class="text-center">{{ pattern.title }}</h1>
+        {% if user.is_authenticated and pattern.created_by == request.user %}
         <span><a href="{% url 'edit_pattern' pattern.slug %}" aria-label="Edit pattern">Edit</a> | <a href="#">Delete</a></span>
+        {% endif %}
         <hr>
         <div class="row mt-4 mb-5">
             <div class="col-md-4">
