@@ -38,23 +38,23 @@
                 <form action="{% url 'save_pattern' pattern.slug %}" method="POST">
                     {% csrf_token %}
                     {% if saved %}
-                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}" class="btn btn-link remove-text-decoration"><i
+                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}" class="btn btn-outline-secondary remove-text-decoration"><i
                             class="fa-solid fa-bookmark"></i> Saved
                         for
                         Later</button>
                     {% else %}
-                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}" class="btn btn-link remove-text-decoration"><i
+                    <button type="submit" name="save_for_later" value="{{ pattern.slug }}" class="btn btn-outline-secondary remove-text-decoration"><i
                             class="fa-regular fa-bookmark"></i> Save
                         for Later</button>
                 </form>
                 {% endif %}
                 {% else %}
                 <p><i class="fa-regular fa-bookmark"></i> To save for later, please <a
-                        href="{% url 'account_login' %}?next={{request.path}}" aria-label="Log in to save pattern for later">Log In</a> or <a
-                        href="{% url 'account_signup' %}?next={{request.path}}" aria-label="Sign up to save pattern for later">Sign Up</a>.</p>
+                        href="{% url 'account_login' %}?next={{request.path}}" aria-label="Log in to save pattern for later" class="remove-text-decoration">Log In</a> or <a
+                        href="{% url 'account_signup' %}?next={{request.path}}" aria-label="Sign up to save pattern for later" class="remove-text-decoration">Sign Up</a>.</p>
                 </form>
                 {% endif %}
-                <h4>Description:</h4>
+                <h4 class="mt-2">Description:</h4>
                 <p>{{ pattern.description|safe }}</p>
                 <table class="table table-bordered">
                     <tbody>
