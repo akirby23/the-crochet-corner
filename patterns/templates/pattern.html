@@ -46,13 +46,12 @@
                     <button type="submit" name="save_for_later" value="{{ pattern.slug }}" class="btn btn-outline-secondary remove-text-decoration"><i
                             class="fa-regular fa-bookmark"></i> Save
                         for Later</button>
-                </form>
                 {% endif %}
+                </form>
                 {% else %}
                 <p><i class="fa-regular fa-bookmark"></i> To save for later, please <a
                         href="{% url 'account_login' %}?next={{request.path}}" aria-label="Log in to save pattern for later" class="remove-text-decoration">Log In</a> or <a
                         href="{% url 'account_signup' %}?next={{request.path}}" aria-label="Sign up to save pattern for later" class="remove-text-decoration">Sign Up</a>.</p>
-                </form>
                 {% endif %}
                 <h4 class="mt-2">Description:</h4>
                 <p>{{ pattern.description|safe }}</p>
@@ -94,13 +93,13 @@
         <hr />
 
         <div class="row g-3">
+            <!-- Allows the user to add comments if authenticated -->
             <div class="col-sm-6">
-                <!-- Allows the user to add comments if authenticated -->
                 {% if user.is_authenticated %}
                 <h5>Share your thoughts:</h5>
                 <form method="post">
                     {{ comment_form | crispy }} {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
                 </form>
                 {% else %}
                 <!-- Prompts the user to log in/sign up to add a comment -->
@@ -136,15 +135,19 @@
                 {% endfor %}
             </div>
         </div>
+
+        <!-- Allows the user to navigate back to the top of the screen or back to the All Patterns page -->
         <div class="row mb-5">
             <div class="col">
                 <button onClick="backToTop()" type="button" title="Back to the top" class="btn btn-primary"><i
                         class="fa-solid fa-arrow-up"></i></button>
-                <div class="pt-4"><a href="{% url 'pattern_list' %}" class="remove-text-decoration"><i
-                            class="fa-solid fa-arrow-left"></i> Back to All Patterns</a></div>
+                <div class="col pt-4">
+                    <a href="{% url 'pattern_list' %}" class="remove-text-decoration"><i class="fa-solid fa-arrow-left"></i>
+                        Back to All Patterns</a>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
 </article>
 {% endblock %}
 
