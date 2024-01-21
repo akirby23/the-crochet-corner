@@ -3,11 +3,17 @@
 <article>
     <!-- Pattern Details -->
     <div class="container">
-        <h2 class="text-center text-capitalize">{{ pattern.title }}</h2>
+        <div class="row mt-4">
+            <div class="col">
+                <h2 class="text-md-end text-capitalize">{{ pattern.title }}</h2>
         <!-- Displays "Edit" and "Delete" buttons to the user who created the pattern while authenticated -->
-        {% if user.is_authenticated and pattern.created_by == request.user %}
-        <span><a href="{% url 'edit_pattern' pattern.slug %}" aria-label="Edit pattern">Edit</a> | <a href="{% url 'delete_pattern' pattern.slug %}" aria-label="Delete pattern">Delete</a></span>
-        {% endif %}
+            </div>
+            <div class="col text-end">
+                {% if user.is_authenticated and pattern.created_by == request.user %}
+                <span><a href="{% url 'edit_pattern' pattern.slug %}" aria-label="Edit pattern" class="btn btn-primary remove-text-decoration">Edit</a></span> <span><a href="{% url 'delete_pattern' pattern.slug %}" aria-label="Delete pattern" class="btn btn-danger">Delete</a></span>
+                {% endif %}
+            </div>
+        </div>
         <hr>
         <div class="row mt-4 mb-5">
             <div class="col-md-4">
