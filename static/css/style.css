@@ -14,10 +14,18 @@ h5 {
 
 body {
     font-family: 'Noto Serif JP', serif;
+    background-color: #F8F8F8;
+    color: #0e0e0e;
 }
+
 
 .remove-text-decoration {
     text-decoration: none;
+}
+
+a:hover {
+    color: rgba(131, 178, 113, 1);
+    transition: 0.5s;
 }
 
 /* Home page */
@@ -42,6 +50,17 @@ body {
     object-fit: cover;
 }
 
+.card-title,
+.card-body {
+    color: #0e0e0e;
+}
+
+.card-title,
+.card-body a:hover {
+    color: rgba(131, 178, 113, 1);
+    transition: 0.5s;
+}
+
 /* Navbar */
 
 nav {
@@ -62,4 +81,8 @@ footer {
 footer a {
     text-decoration: none;
     color: #0e0e0e;
+}
+
+#disclaimer {
+    font-size: 0.75rem
 }
