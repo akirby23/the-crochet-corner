@@ -3,7 +3,7 @@
 <article>
     <!-- Pattern Details -->
     <div class="container">
-        <h1 class="text-center">{{ pattern.title }}</h1>
+        <h2 class="text-center">{{ pattern.title }}</h2>
         {% if user.is_authenticated and pattern.created_by == request.user %}
         <span><a href="{% url 'edit_pattern' pattern.slug %}" aria-label="Edit pattern">Edit</a> | <a href="{% url 'delete_pattern' pattern.slug %}" aria-label="Delete pattern">Delete</a></span>
         {% endif %}
@@ -115,6 +115,12 @@
                 <p>There are no comments yet.</p>
                 {% endfor %}
             </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col">
+            <button onClick="backToTop()" type="button" title="Back to the top" class="btn btn-primary"><i class="fa-solid fa-arrow-up"></i></button>
+            <div class="pt-4"><a href="{% url 'pattern_list' %}" class="remove-text-decoration"><i class="fa-solid fa-arrow-left"></i> Back to All Patterns</a></div>
         </div>
     </div>
 </article>
