@@ -1,7 +1,12 @@
 # The Crochet Corner
 
+## About
+
+The Crochet Corner is a crochet pattern sharing platform and community. Whether you're a seasoned crochet artist or just getting started, this is the perfect place you to get inspired and inspire others to create beautiful crochet projects.
+
 ## Table of Contents
 - [The Crochet Corner](#the-crochet-corner)
+  - [About](#about)
   - [Table of Contents](#table-of-contents)
   - [User Goals](#user-goals)
   - [Site Owner Goals](#site-owner-goals)
