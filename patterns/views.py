@@ -65,7 +65,7 @@ class PatternPage(View):
 
 class CreatePattern(LoginRequiredMixin, CreateView):
     """
-    Allows authenticated users to create crochet patterns 
+    Allows authenticated users to create crochet patterns
     from the UI.
     """
     model = Pattern
@@ -101,7 +101,18 @@ class EditPattern(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
 
+    def get_queryset(self):
+        """
+        Prevents users from editing patterns they have not
+        created.
+        Written with help from Stack Overflow
+        (link in README.md)
+        """
+        queryset = super(EditPattern, self).get_queryset()
+        queryset = queryset.filter(created_by=self.request.user)
+        return queryset
 
+    
 class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     model = Comment
     form_class = CommentForm
@@ -119,6 +130,17 @@ class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
         self.object.approved = False
         self.object.save()
         return super().form_valid(form)
+   
+    def get_queryset(self):
+        """
+        Prevents users from editing patterns they have not
+        created.
+        Written with help from Stack Overflow
+        (link in README.md)
+        """
+        queryset = super(EditComment, self).get_queryset()
+        queryset = queryset.filter(created_by=self.request.user)
+        return queryset
 
 
 class DeleteComment(LoginRequiredMixin, DeleteView, SuccessMessageMixin):

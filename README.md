@@ -180,7 +180,7 @@ Set them as follows:
 
 - [Django 5.0 documentation](https://docs.djangoproject.com/en/5.0/) was consulted during the development of the backend features of this project.
 - [Bootstrap 5.3 documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) was consulted during the development of the frontend features of this project.
-- [stackoverflow](https://stackoverflow.com/) was used for troubleshooting throughout the development of the project, namely for support with [Bootstrap card images to render in the same height](https://stackoverflow.com/questions/37287153/how-to-get-images-in-bootstraps-card-to-be-the-same-height-width) and with [redirecting to the previous page after completing an action](https://stackoverflow.com/questions/806835/django-redirect-to-previous-page-after-login).
+- [stackoverflow](https://stackoverflow.com/) was used for troubleshooting throughout the development of the project. It also helped with [ rendering Bootstrap card images in the same height](https://stackoverflow.com/questions/37287153/how-to-get-images-in-bootstraps-card-to-be-the-same-height-width), with [redirecting to the previous page after completing an action](https://stackoverflow.com/questions/806835/django-redirect-to-previous-page-after-login) and with [preventing users from editing/deleting content that they have not posted](https://stackoverflow.com/questions/43209606/django-writing-generic-update-view-restricted-to-certain-user).
 - [django-summernote](https://github.com/summernote/django-summernote) for support with rendering Summernote fields on the frontend.
 
 ### Media
