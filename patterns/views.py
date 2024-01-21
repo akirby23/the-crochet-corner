@@ -11,6 +11,10 @@ from .forms import PatternForm, CommentForm
 
 
 class PatternList(generic.ListView):
+    """
+    Displays a list of published crochet patterns.
+    Filters them from newest to oldest. 
+    """
     model = Pattern
     queryset = Pattern.objects.filter(status=1).order_by('-created_on')
     template_name = "pattern_list.html"
@@ -18,6 +22,10 @@ class PatternList(generic.ListView):
 
 
 class PatternPage(View):
+    """
+    Displays the pattern details.
+    """
+
     def get(self, request, slug, *args, **kwargs):
         queryset = Pattern.objects.filter(status=1)
         pattern = get_object_or_404(queryset, slug=slug)
@@ -57,13 +65,14 @@ class PatternPage(View):
             comment = comment_form.save(commit=False)
             comment.pattern = pattern
             comment.save()
+            messages.success(self.request, 'Your comment is pending approval.')
         else:
             comment_form = CommentForm()
 
         return render(request, "pattern.html", context)
 
 
-class CreatePattern(LoginRequiredMixin, CreateView):
+class CreatePattern(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     """
     Allows authenticated users to create crochet patterns
     from the UI.
@@ -72,6 +81,7 @@ class CreatePattern(LoginRequiredMixin, CreateView):
     form_class = PatternForm
     template_name = 'create_pattern.html'
     success_url = '/'
+    success_message = 'Pattern has been created successfully.'
 
     def form_valid(self, form):
         """
@@ -84,14 +94,15 @@ class CreatePattern(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class EditPattern(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
+class EditPattern(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     """
     Allows authenticated users to edit their own patterns.
     """
     model = Pattern
     form_class = PatternForm
-    template_name = "edit_pattern.html"
-    success_url = "/"
+    template_name = 'edit_pattern.html'
+    success_url = '/'
+    success_message = 'Pattern has been edited successfully.'
 
     def form_valid(self, form):
         """
@@ -113,18 +124,37 @@ class EditPattern(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
         return queryset
 
 
-class DeletePattern(LoginRequiredMixin, DeleteView, SuccessMessageMixin):
+class DeletePattern(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+    """
+    Allows authenticated users to delete their own patterns.
+    """
     model = Pattern
     form_class = PatternForm
     template_name = 'delete_pattern.html'
     success_url = '/'
+    success_message = 'Pattern has been deleted.'
+
+    def get_queryset(self):
+        """
+        Prevents users from deleting patterns they have not
+        created.
+        Written with help from Stack Overflow
+        (link in README.md)
+        """
+        queryset = super(DeletePattern, self).get_queryset()
+        queryset = queryset.filter(created_by=self.request.user)
+        return queryset
 
 
-class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
+class EditComment(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    """
+    Allows authenticated users to edit their own comments.
+    """
     model = Comment
+    form_class = CommentForm
     template_name = 'edit_comment.html'
-    success_message = 'Your comment has been edited and is now pending approval.'
     success_url = '/'
+    success_message = 'Comment has been edited and is now pending approval.'
 
     def form_valid(self, form):
         """
@@ -145,21 +175,28 @@ class EditComment(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
         (link in README.md)
         """
         queryset = super(EditComment, self).get_queryset()
-        queryset = queryset.filter(created_by=self.request.user)
+        queryset = queryset.filter(author=self.request.user)
         return queryset
 
 
-class DeleteComment(LoginRequiredMixin, DeleteView, SuccessMessageMixin):
+class DeleteComment(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+    """
+    Allows authenticated users to delete their own comments.
+    """
     model = Comment
     form_class = CommentForm
     template_name = 'delete_comment.html'
-    success_message = 'Your comment has been deleted successfully.'
     success_url = '/'
+    success_message = 'Comment has been deleted successfully.'
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(DeleteComment, self).delete(request, *args, **kwargs)
 
 
-class SavePattern(View):
+class SavePattern(LoginRequiredMixin, View):
     """
-    Allows the user to save the pattern for later.
+    Allows authenticated users to save patterns for later.
     """
 
     def post(self, request, slug):
@@ -167,17 +204,20 @@ class SavePattern(View):
         if pattern.saved.filter(id=request.user.id).exists():
             pattern.saved.remove(request.user)
             messages.success(
-                self.request, 'This pattern has been removed from My Saved Patterns.'
+                self.request, 'Pattern removed from My Saved Patterns.'
             )
         else:
             pattern.saved.add(request.user)
             messages.success(
-                self.request, 'This pattern has been added to My Saved Patterns.'
+                self.request, 'Pattern added to My Saved Patterns.'
             )
         return HttpResponseRedirect(reverse('pattern_page', args=[slug]))
 
 
 class SavedPatternList(LoginRequiredMixin, generic.ListView):
+    """
+    Displays the authenticated user's saved patterns.
+    """
     model = Pattern
     template_name = "saved_pattern_list.html"
     paginate_by = 9
