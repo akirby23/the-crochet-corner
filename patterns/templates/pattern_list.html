@@ -22,9 +22,9 @@
           {% if 'placeholder' in pattern.featured_image.url %}
           <!-- Adds a placeholder image if the creator of the pattern has not added one -->
           <img src="https://res.cloudinary.com/dxs42sums/image/upload/v1705542273/pattern-placeholder_ljrrtz.jpg"
-            class="card-img-top" alt="Placeholder pattern image"/>
+            class="card-img-top" alt="Placeholder pattern image">
           {% else %}
-          <img src="{{ pattern.featured_image.url }}" class="card-img-top" alt="Pattern image"/>
+          <img src="{{ pattern.featured_image.url }}" class="card-img-top" alt="Pattern image">
           {% endif %}
           <div class="card-body">
             <h3 class="card-title text-capitalize">{{ pattern.title }}</h3>

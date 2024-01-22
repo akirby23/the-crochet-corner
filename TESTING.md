@@ -299,6 +299,30 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 
 ### HTML
 
+The HTML pages were validated using the [W3 HTML Validation Service](https://validator.w3.org/)
+
+| Screenshot  | Status  |
+|---|---|
+| ![Home page](documentation/testing/validator-testing/html/html-validated-1.PNG)  |  Passed with no errors |
+| ![All Patterns Page](documentation/testing/validator-testing/html/html-validated-11.PNG) | Trailing slashes, since resolved |
+| ![Pattern Page](documentation/testing/validator-testing/html/html-validated-12.PNG) | Errors deriving from the summernotes fields, currently unresolved |
+| ![Create Pattern Page](documentation/testing/validator-testing/html/html-validated-2.PNG)   | Trailing slash, unresolved as this derives from the summernote field  |
+| ![Log In Page](documentation/testing/validator-testing/html/html-validated-3.PNG)  | Passed, no errors  |
+| ![Log Out Page](documentation/testing/validator-testing/html/html-validated-4.PNG)  | Passed, no errors  |
+| ![Sign Up Page](documentation/testing/validator-testing/html/html-validated-5.PNG)  | Errors deriving from django allauth form, therefore unresolved  |
+
+
+The pages below were tested via text input due to login being required to access them. 
+Django related error messages have been filtered out. 
+
+| Screenshot  | Status  |
+|---|---|
+| ![My Saved Patterns](documentation/testing/validator-testing/html/html-validated-6.PNG) | Passed with no errors  |
+| ![Delete Comment Page](documentation/testing/validator-testing/html/html-validated-7.PNG) | Passed with no errors  |
+|![Delete Pattern Page](documentation/testing/validator-testing/html/html-validated-8.PNG) | Passed with no errors  |
+|![Edit Comment Page](documentation/testing/validator-testing/html/html-validated-9.PNG) | Passed with no errors  |
+|![Edit Pattern Page](documentation/testing/validator-testing/html/html-validated-10.PNG) | Passed with no errors  |
+
 
 
 ### CSS
