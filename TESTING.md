@@ -13,8 +13,7 @@
 
 | User Story  | Acceptance Criteria   |  Status |
 |---|---|---|
-| As a user, I can register for an account so that I can sign in and access member-only features such as reviewing, saving and commenting on crochet patterns.  |The user should be able to register for an account by clicking on the Sign Up button on the navigation bar.   |  Pass |
-|   | Once the user clicks on the Sign Up button, they should see a form that will guide them through how to register for an account.  | Pass  |
+| As a user, I can register for an account so that I can sign in and access member-only features such as reviewing, saving and commenting on crochet patterns.  |The user should be able to register for an account by clicking on the Sign Up button on the navigation bar. <br> Once the user clicks on the Sign Up button, they should see a form that will guide them through how to register for an account.  |  Pass |
 | As a user, I can log in so that I can review, save and comment on crochet patterns.  | A "Log In" button should display in the navigation to users who are not already logged in. <br>The user should be required to provide a valid username & password.<br>Feedback should be given to the user to confirm whether or not they have signed in successfully.  | Pass  |
 | As a registered user, I can sign out so that I can ensure the security of my account.  | A "Log Out" button should be visible in the navigation bar to users who are signed in. <br> Feedback should be provided to the user to confirm that they have successfully signed out.  |  Pass |
 | As a registered user, I can create crochet patterns so that I can add to the collection.  | Only users who are logged in should be able to create crochet patterns. <br> A "Create Pattern" button should display to users who are logged in on the Pattern List page. | Pass  |
@@ -76,10 +75,7 @@
 | Feature  | Expected Behaviour  | Status  |  Notes |  
 |---|---|---|---|
 | Hero Section  | Hero image is displayed with a welcome message for the user.  | Pass  |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+| Calls to Action  | Browse, Save & Share calls to action are displayed on the homepage  | Pass  |   |
 
 </details>
 
@@ -211,9 +207,8 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 |---|---|---|---|
 | Delete Comment Access  | Accessible to the comment author only.  |  Pass | Tested on a url with the structure of `patterns/<pk>/delete_comment` while logged in as a user who did not create the comment, 404 error thrown.<br> 403 error would be preferred, however marking as a pass as the user is still being prevented from completing an unauthorised request.   |
 | Delete Button  | Once clicked, the comment is deleted and the user is alerted.  |   |   |
-| Cancel Button   | Once clicked, the action is aborted and the user is redirected back to the pattern. |   |   |
-|   |   |   |   |
-|   |   |   |   |
+| Cancel Button   | Once clicked, the action is aborted and the user is redirected back to the pattern. | Pass  |   |
+
 
 </details>
 
@@ -222,11 +217,12 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 
 | Feature  | Expected Behaviour  | Status  |  Notes |  
 |---|---|---|---|
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+|  Log In Page Access | Accessible to unauthenticated users only.  | Pass  | Tested with a URL with the structure of `/accounts/login/` while logged out, was redirected to the home page.  |
+| Username input  | Username can be added to the text field  | Pass  |   |
+| Password Input  | Password can be added to the text field  |  Pass |   |
+| Forgot Password Input | Once clicked, the user is redirected to a form that will allow them to reset their password.  | Pass  | The link works as expected, however due to time constraints it has not been configured nor was I able to remove the link from the UI.  |
+| Remember Me   | User can click the check box to remember them.   | Pass  |   |
+| Log In Button  | If the login credentials are valid, the user is logged in and alerted of the same. <br> If the login credentials are not valid, the user is prompted to correct any errors before proceeding.   | Pass  |   |
 
 </details>
 
@@ -235,11 +231,10 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 
 | Feature  | Expected Behaviour  | Status  |  Notes |  
 |---|---|---|---|
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+| Log Out Page Access  | Accessible to authenticated users only.   | Pass  | Tested with a URL with the structure of `/accounts/logout/` while logged in, was redirected to the home page.  |
+| Log Out Prompt  | User is prompted to confirm that they want to log out  | Pass  |   |
+| Log Out Button   | Once clicked, the user is logged out and alerted of the same.  | Pass  |   |
+
 
 </details>
 
@@ -248,11 +243,15 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 
 | Feature  | Expected Behaviour  | Status  |  Notes |  
 |---|---|---|---|
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+| Sign Up Page Access  | Accessible to unauthenticated users only.   | Pass  | Tested with a URL with the structure of `/accounts/signup/` while logged in, was redirected to the home page.   |
+| Sign Up Benefits  |  Benefits of signing up are displayed to the user. |  Pass |   |
+| Log In Prompt  | User is prompted to log in if they already have an account. <br> By clicking the “Log In” link, the user is redirected to the login page.   | Pass  |   |
+| Username Input  | Username can be added to the text field  | Pass  |   |
+| Password Input  | Password can be added to the text field  |  Pass |   |
+| Email Address  | User can provide an optional email address in the text field.  |  Pass |   |
+|Password Requirements   | Password requirements are displayed to the user.   | Pass  |   |
+| Password Confirm  | User is prompted to confirm their password. <br> This can be added to another textfield.  | Pass  |   |
+| Sign Up Button   | If the credentials are valid/password requirements are met, the account is created. The user is logged in and alerted of this. <br> Otherwise, the user is prompted to correct any errors before proceeding. |  Pass | As expected, the user can sign up with or without an email address.  |
 
 </details>
 
@@ -261,11 +260,16 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 
 | Feature  | Expected Behaviour  | Status  |  Notes |  
 |---|---|---|---|
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+| Admin Panel Access  | Accessible to admins only.  | Pass  | Tested with a URL with the structure of `/admin/` while logged out and while logged in as a normal user, was redirected to the admin sign in page.  |
+| Patterns   | Admin can access all patterns from the admin panel.  | Pass  |   |
+| Comments  | Admin can access all comments from the admin panel.  | Pass  |   |
+|Approve/disapprove comments   | Admin can approve/disapprove comments from the admin panel.  | Pass  |   |
+| Delete Comments  | Admin can delete comments from the admin panel.  | Pass  |   |
+| Filter comments  | Admin can filter comments by approved status, created date and author.  | Pass  |   |
+| Create Crochet Patterns  |  Admin can create crochet patterns from the admin panel. | Pass  |   |
+| Update Crochet Patterns  | Admin can update crochet patterns from the admin panel.  | Pass  |   |
+| Delete Crochet Patterns  | Admin can update delete patterns from the admin panel.  | Pass  |   |
+
 
 </details>
 
@@ -274,11 +278,12 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 
 | Feature  | Expected Behaviour  | Status  |  Notes |  
 |---|---|---|---|
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+| 400.html  | Display template when a 400 error is thrown.  | Pass  |   |
+| 403.html  | Display template when a 403 error is thrown.  |  Pass |   |
+| 404.html | Display template when a 404 error is thrown.   | Pass  |   |
+| 500.html  | Display template when a 500 error is thrown.   | Pass  |   |
+| Return to Home links  | When the user clicks “here” to return to the home page, they are redirected to the home page.  | Pass  |   |
+
 
 </details>
 
