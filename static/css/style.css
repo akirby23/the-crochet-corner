@@ -25,7 +25,7 @@ body {
 }
 
 a {
-    color: #0e0e0e 
+    color: #0e0e0e
 }
 
 a:hover {
@@ -71,6 +71,19 @@ nav {
     height: 30px;
 }
 
+/* Log In & Log Out pages */
+
+#authenticate {
+    height: 80vh;
+}
+
+/* Edit Comment, Delete Comment, Delete Pattern pages */
+
+#edit,
+#delete {
+    height: 80vh;
+}
+
 /* Footer  */
 
 footer {
@@ -104,5 +117,8 @@ footer a {
     .card-img-top {
         height: 55vw;
     }
-}
 
+    #authentication {
+        height: 125vh;
+    }
+}
