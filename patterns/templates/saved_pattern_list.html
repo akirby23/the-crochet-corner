@@ -1,34 +1,23 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="container mt-5">
-  <h1 class="text-center p-1">My Saved Patterns</h1>
+  <h2 class="text-center p-1">My Saved Patterns</h2>
   <hr />
   <div class="row">
     {% for pattern in pattern_list %}
     <!-- Renders patterns that have been saved by the user as cards -->
     <div class="col-md-4 g-4 text-center">
-      <div class="card h-100 pattern-card">
-        <a
-          href="{% url 'pattern_page' pattern.slug  %}"
-          class="remove-text-decoration"
-          aria-label="Pattern"
-        >
+      <div class="card h-100 bg-body-tertiary rounded shadow">
+        <a href="{% url 'pattern_page' pattern.slug  %}" class="remove-text-decoration" aria-label="Pattern">
           <!-- Adds a placeholder image if the creator of the pattern has not added one -->
           {% if 'placeholder' in pattern.featured_image.url %}
-          <img
-            src="https://res.cloudinary.com/dxs42sums/image/upload/v1705542273/pattern-placeholder_ljrrtz.jpg"
-            class="card-img-top"
-            alt="Placeholder pattern image"
-          />
+          <img src="https://res.cloudinary.com/dxs42sums/image/upload/v1705542273/pattern-placeholder_ljrrtz.jpg"
+            class="card-img-top" alt="Placeholder pattern image" />
           {% else %}
-          <img
-            src="{{ pattern.featured_image.url }}"
-            class="card-img-top"
-            alt="Pattern image"
-          />
+          <img src="{{ pattern.featured_image.url }}" class="card-img-top" alt="Pattern image" />
           {% endif %}
           <div class="card-body">
-            <h5 class="card-title">{{ pattern.title }}</h5>
+            <h3 class="card-title text-capitalize">{{ pattern.title }}</h3>
             <hr />
             <p>Difficulty level: {{ pattern.difficulty_level }}</p>
           </div>
@@ -39,12 +28,8 @@
     <div class="col-md-8 text-center">
       <p>You have not saved any patterns yet.</p>
       <p>
-        <a
-          href="{% url 'pattern_list' %}"
-          aria-label="Navigate to the full list of patterns"
-          class="remove-text-decoration"
-          >Browse All Patterns</a
-        >
+        <a href="{% url 'pattern_list' %}" aria-label="Navigate to the full list of patterns"
+          class="remove-text-decoration">Browse All Patterns</a>
       </p>
     </div>
     {% endfor %}
@@ -56,18 +41,10 @@ Borrow & adapted from: https://docs.djangoproject.com/en/5.0/topics/pagination/#
 <div class="pagination justify-content-center p-3">
   <span class="step-links">
     {% if page_obj.has_previous %}
-    <a
-      href="?page=1"
-      aria-label="Navigate to the first page of patterns"
-      class="remove-text-decoration"
-      >&laquo; first</a
-    >
-    <a
-      href="?page={{ page_obj.previous_page_number }}"
-      aria-label="Navigate to the previous page of patterns"
-      class="remove-text-decoration"
-      >previous</a
-    >
+    <a href="?page=1" aria-label="Navigate to the first page of patterns" class="remove-text-decoration">&laquo;
+      first</a>
+    <a href="?page={{ page_obj.previous_page_number }}" aria-label="Navigate to the previous page of patterns"
+      class="remove-text-decoration">previous</a>
     {% endif %}
 
     <span class="current">
@@ -75,18 +52,10 @@ Borrow & adapted from: https://docs.djangoproject.com/en/5.0/topics/pagination/#
     </span>
 
     {% if page_obj.has_next %}
-    <a
-      href="?page={{ page_obj.next_page_number }}"
-      aria-label="Navigate to the next page of patterns"
-      class="remove-text-decoration"
-      >next</a
-    >
-    <a
-      href="?page={{ page_obj.paginator.num_pages }}"
-      aria-label="Navigate to the last page of patterns"
-      class="remove-text-decoration"
-      >last &raquo;</a
-    >
+    <a href="?page={{ page_obj.next_page_number }}" aria-label="Navigate to the next page of patterns"
+      class="remove-text-decoration">next</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}" aria-label="Navigate to the last page of patterns"
+      class="remove-text-decoration">last &raquo;</a>
     {% endif %}
   </span>
 </div>

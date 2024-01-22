@@ -5,10 +5,11 @@
 
 h1,
 h2,
-h3,
-h5 {
+h3 {
     font-family: 'Spectral', serif;
+    margin-bottom: 0;
 }
+
 
 /* Global styling */
 
@@ -21,6 +22,10 @@ body {
 
 .remove-text-decoration {
     text-decoration: none;
+}
+
+a {
+    color: #0e0e0e 
 }
 
 a:hover {
@@ -55,12 +60,6 @@ a:hover {
     color: #0e0e0e;
 }
 
-.card-title,
-.card-body a:hover {
-    color: rgba(131, 178, 113, 1);
-    transition: 0.5s;
-}
-
 /* Navbar */
 
 nav {
@@ -86,3 +85,24 @@ footer a {
 #disclaimer {
     font-size: 0.75rem
 }
+
+/* Media Queries */
+
+/* For screens 768px and below */
+
+@media screen and (max-width: 768px) {
+    .card-img-top {
+        height: 45vw;
+    }
+
+    button.btn-secondary {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card-img-top {
+        height: 55vw;
+    }
+}
+

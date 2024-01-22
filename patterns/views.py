@@ -206,7 +206,7 @@ class DeleteComment(LoginRequiredMixin, DeleteView):
         (link in README.md)
         """
         queryset = super(DeleteComment, self).get_queryset()
-        queryset = queryset.filter(created_by=self.request.user)
+        queryset = queryset.filter(author=self.request.user)
         return queryset
 
     def delete(self, request, *args, **kwargs):
