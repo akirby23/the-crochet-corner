@@ -286,7 +286,6 @@ Below is the current design of the models:
 - [Cloudinary](https://cloudinary.com/): to store static files online.
 - [Balsamiq](https://balsamiq.com/): to create the wireframes.
 - [Whitenoise](https://whitenoise.readthedocs.io/en/latest/): for hosting static files for deployment.
-- [Am I Responsive](https://ui.dev/amiresponsive): to test the responsiveness of the project. 
 - [Google Fonts](https://fonts.google.com/): to import the "Spectral" & "Noto Serif JP" fonts.
 - [FontAwesome](https://fontawesome.com/): to import the icons used throughout the project.
 - [coolors](https://coolors.co/): to generate the colour palette.
