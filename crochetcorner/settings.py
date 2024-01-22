@@ -31,7 +31,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['the-crochet-corner-ec269bd20745.herokuapp.com',
                  '8000-akirby23-the-crochet-cor-1tqnzz0t21.us2.codeanyapp.com',
