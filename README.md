@@ -18,7 +18,6 @@ The Crochet Corner is a crochet pattern sharing platform and community. Whether 
       - [Imagery](#imagery)
       - [Wireframes](#wireframes)
       - [Database Design](#database-design)
-      - [Features](#features)
   - [Technologies Used](#technologies-used)
     - [Languages](#languages)
     - [Frameworks, Libraries \& Programs](#frameworks-libraries--programs)
@@ -260,8 +259,6 @@ Below is the current design of the models:
 
 </details>
 
-### Features
-
 ## Technologies Used
 
 ### Languages
@@ -284,7 +281,7 @@ Below is the current design of the models:
 - [CodeAnywhere](https://app.codeanywhere.com/): to write the code.
 - [GitPod](https://gitpod.io/): to write the code.
 - [Git](https://git-scm.com/): to commit & push the code to GitHub for version control.
-- [GitHub](https://github.com/): to store the code in its repository.
+- [GitHub](https://github.com/): to store the code in its repository and to manage the KanBan board.
 - [ChromeDevTools](https://developer.chrome.com/docs/devtools) for debugging and manual testing.
 - [Cloudinary](https://cloudinary.com/): to store static files online.
 - [Balsamiq](https://balsamiq.com/): to create the wireframes.
@@ -297,6 +294,43 @@ Below is the current design of the models:
 ## Testing
 
 The testing details are documented within the [TESTING.md](TESTING.md) file.
+
+## Agile Development Process
+
+This project was developed using an Agile approach.
+
+- User stories were prioritised using the MoSCoW method:
+
+|   |   |
+|---|---|
+| Must Have  | Essential features  |
+| Should Have  | Important but not absolutely essential features  |
+| Could Have  | Nice to have but not essential features  |
+| Won't Have  | Non essential features, may be implemented in the future  |
+
+GitHub Issues was used to prioritise each user story and to define acceptance criteria & tasks.
+
+![Completed User Stories](documentation/readme/github-issues-completed-1.PNG)
+![Completed User Stories](documentation/readme/github-issues-completed-2.PNG)
+![Won't Have User Stories](documentation/readme/github-issues-wont-have.PNG)
+
+
+- User stories were then refined into Epics using Milestones in GitHub:
+
+|   |   |
+|---|---|
+| Iteration 1  | ![Iteration 1](documentation/readme/epics/epic-1.PNG) |
+| Iteration 2  | ![Iteration 2](documentation/readme/epics/epic-2.PNG) |
+| Iteration 3  | ![Iteration 3](documentation/readme/epics/epic-3.PNG) |
+| Iteration 4  | ![Iteration 4, issue closed](documentation/readme/epics/epic-4.1.PNG) ![Iteration 4, issue deprioritised](documentation/readme/epics/epic-4.2.PNG) |
+| Iteration 5  | ![Iteration 5](documentation/readme/epics/epic-5.PNG) |
+| Iteration 6  | ![Iteration 6](documentation/readme/epics/epic-6.PNG) |
+
+
+A GitHub Project was used to manage and track the progress of the project:
+
+![The Crochet Corner GitHub Project](documentation/readme/the-crochet-corner-project.PNG)
+
 
 ## Deployment
 
