@@ -4,6 +4,8 @@
 
 The Crochet Corner is a crochet pattern sharing platform and community. Whether you're a seasoned crochet artist or just getting started, this is the perfect place you to get inspired and inspire others to create beautiful crochet projects.
 
+[Link to the deployed app](https://the-crochet-corner-ec269bd20745.herokuapp.com/)
+
 ## Table of Contents
 - [The Crochet Corner](#the-crochet-corner)
   - [About](#about)
