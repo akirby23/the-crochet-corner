@@ -124,8 +124,8 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 | Hook Size  | The pattern’s hook size is displayed.  | Pass  |   |
 | Gauge  | The pattern’s gauge type is displayed.  | Pass  |   |
 | Abbreviations  | The pattern’s abbreviations are displayed.  | Pass  |   |
-| Instructions  | The pattern’s instructions are displayed.  |   |   |
-| Comment Section - Log In / Sign Up buttons  | Unauthenticated users are prompted to log in/sign up in order to leave a comment. <br> If the unauthenticated user logs in or signs up via the log in/sign up buttons, they are redirected back to the pattern page they were on.   |   |   |
+| Instructions  | The pattern’s instructions are displayed.  | Pass  |   |
+| Comment Section - Log In / Sign Up buttons  | Unauthenticated users are prompted to log in/sign up in order to leave a comment. <br> If the unauthenticated user logs in or signs up via the log in/sign up buttons, they are redirected back to the pattern page they were on.   |  Pass |   |
 |Comment box   | Authenticated users can input text into the text field and click “Submit” to add a comment. Upon successful completion of the action, the user is alerted that their comment is pending approval.   | Pass   |   |
 | Comments  | Approved comments are displayed in a clear format. <br> The date on which the comment was created is displayed alongside the name of the user who created the comment.   | Pass  |   |
 | Comment Section - Edit Button  | Visible to the authenticated user who created the comment only. <br> Once clicked, the user is directed to a form that will allow them to edit their comment. <br> The data in the form is prepopulated with the user’s comment.   |   |   |
@@ -206,7 +206,7 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 | Feature  | Expected Behaviour  | Status  |  Notes |  
 |---|---|---|---|
 | Delete Comment Access  | Accessible to the comment author only.  |  Pass | Tested on a url with the structure of `patterns/<pk>/delete_comment` while logged in as a user who did not create the comment, 404 error thrown.<br> 403 error would be preferred, however marking as a pass as the user is still being prevented from completing an unauthorised request.   |
-| Delete Button  | Once clicked, the comment is deleted and the user is alerted.  |   |   |
+| Delete Button  | Once clicked, the comment is deleted and the user is alerted.  | Pass  |   |
 | Cancel Button   | Once clicked, the action is aborted and the user is redirected back to the pattern. | Pass  |   |
 
 
@@ -293,6 +293,7 @@ Pattern Title  |  The pattern’s title is displayed. | Pass   |   |
 |---|---|---|---|
 | Save for Later button  | If the user attempts to unsave a crochet pattern for later, they are brought down to the comment section and prompted to submit their comment. Once a comment is entered and the submit button is clicked, the pattern is unsaved. No comment is registered in the backend. ![Save for Later button bug](documentation/testing/bugs/save-for-later-bug.gif)  | Resolved  | **Root cause:** The if statement was eding outside of the form element. ![Save for Later bug root cause](documentation/testing/bugs/save-for-later-bug-root-cause.PNG) **Fix:** Placed the "endif" statement inside the form element. ![Save for Later button fix](documentation/testing/bugs/save-for-later-bug-fix.PNG) |
 | Footer  | Footer was floating in the middle of the page on certain pages  | Resolved  | Expanded the viewport height of the main element on affected pages which resolved the issue  |
+| Create Pattern | Images cannot be added to patterns from the front end. | Unresolved | The image upload functionality in the Create Pattern form works as expected, however the images are not saving to the database. Due to time constraints, this issue has not been resolved yet. The default image is being applied as expected so from a design point of view, the pattern page and pattern list haven't suffered because of this.  |
 
 
 ## Validator Testing
