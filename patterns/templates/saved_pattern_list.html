@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
   <h2 class="text-center p-1">My Saved Patterns</h2>
-  <hr />
+  <hr>
   <div class="row">
     {% for pattern in pattern_list %}
     <!-- Renders patterns that have been saved by the user as cards -->
@@ -12,13 +12,13 @@
           <!-- Adds a placeholder image if the creator of the pattern has not added one -->
           {% if 'placeholder' in pattern.featured_image.url %}
           <img src="https://res.cloudinary.com/dxs42sums/image/upload/v1705542273/pattern-placeholder_ljrrtz.jpg"
-            class="card-img-top" alt="Placeholder pattern image" />
+            class="card-img-top" alt="Placeholder pattern image">
           {% else %}
-          <img src="{{ pattern.featured_image.url }}" class="card-img-top" alt="Pattern image" />
+          <img src="{{ pattern.featured_image.url }}" class="card-img-top" alt="Pattern image">
           {% endif %}
           <div class="card-body">
             <h3 class="card-title text-capitalize">{{ pattern.title }}</h3>
-            <hr />
+            <hr>
             <p>Difficulty level: {{ pattern.difficulty_level }}</p>
           </div>
         </a>

@@ -22,10 +22,9 @@
             <div class="col-md-4">
                 {% if 'placeholder' in pattern.featured_image.url %}
                 <!-- Adds a placeholder image if the creator of the pattern has not added one -->
-                <img src="https://res.cloudinary.com/dxs42sums/image/upload/v1705542273/pattern-placeholder_ljrrtz.jpg"
-                    class="img-fluid rounded shadow" alt="Placeholder pattern image" />
+                <img src="https://res.cloudinary.com/dxs42sums/image/upload/v1705542273/pattern-placeholder_ljrrtz.jpg" class="img-fluid rounded shadow" alt="Placeholder pattern image">
                 {% else %}
-                <img src="{{ pattern.featured_image.url }}" class="img-fluid rounded shadow" alt="Pattern image" />
+                <img src="{{ pattern.featured_image.url }}" class="img-fluid rounded shadow" alt="Pattern image">
                 {% endif %}
             </div>
             <div class="col-md-8">
@@ -90,7 +89,7 @@
             </div>
         </div>
 
-        <hr />
+        <hr>
 
         <div class="row g-3">
             <!-- Allows the user to add comments if authenticated -->
