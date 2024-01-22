@@ -92,6 +92,16 @@ The Crochet Corner is a crochet pattern sharing platform and community. Whether 
 
 #### Colours
 
+![Colour palette](documentation/readme/colour-palette.png)
+
+`#0e0e0e` has been used as the font colour.
+
+`#83B271` has been used as an accent colour.
+
+`#F8F8F8` has been used as the background colour.
+
+The colours above were generated from the hero image to match the theme of the website.
+
 #### Typography
 
 "Spectral" with a fallback font of "Serif" has been used for the main headings.
